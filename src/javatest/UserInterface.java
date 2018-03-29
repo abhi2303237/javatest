@@ -11,11 +11,11 @@ import javax.swing.JTextField;
 
 public class UserInterface extends JFrame{
 	
-	public JTextField field;
-	public JLabel label;
-	public JButton push;
-	public JButton pop;
-	public JButton dis;
+	private JTextField field;
+	private JLabel label;
+	private JButton push;
+	private JButton pop;
+	private JButton dis;
 	
 	
 	UserInterface(String str){
@@ -35,5 +35,45 @@ public class UserInterface extends JFrame{
         setVisible(true);
         setLayout(new FlowLayout());
 	}
+
+	public void setPush(Stack stc,UserInterface ui) {
+		this.push.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				int a = Integer.parseInt(ui.field.getText());
+				stc.push(a);
+				ui.field.setText(null);
+			}
+			
+		});
+	}
+
+
+	public void setPop(Stack stc,UserInterface ui) {
+		this.push.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				int a = stc.pop();
+				ui.label.setText(Integer.toString(a));
+			}
+			
+		});
+	}
+
+
+	public void setDisp(Stack stc,UserInterface ui) {
+		this.push.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				ui.label.setText(stc.show());
+			}
+			
+		});
+	}
+	
+	
 	
 }
